@@ -68,7 +68,7 @@ def find_solution():
                                     exploration_steps=exploration_steps,
                                     )
     except Exception as e:
-        return error("An error occurred trying to solve this matrix")
+        return error(f"An error occurred trying to solve this matrix. \n {e}")
 
     return jsonify({'solution': planning_helper.plan_to_people(plan)})
 

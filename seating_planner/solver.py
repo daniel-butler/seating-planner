@@ -113,7 +113,7 @@ class AnnealHelper(object):
 
 
     def get_initial_plan(self):
-        people = range(0, self.PEOPLE_COUNT)
+        people = list(range(0, self.PEOPLE_COUNT))
         random.shuffle(people)
 
         # We need extra items, to represent spare places.  This allows us the
