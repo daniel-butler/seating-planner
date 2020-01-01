@@ -62,17 +62,18 @@ Lori
 def empty(table):
     return all(p == -1 for p in table)
 
+
 ### People who are coming, and information about connections
 
 MAX_CONNECTION = 50
 
 CONSERVE_TABLE_COEFFICIENT = 50
 
+
 class PlanningHelper(object):
     def __init__(self, names, connections):
         self.NAMES = names
         self.CONNECTIONS = connections
-
 
     def plan_to_people(self, plan):
         plan = [[
@@ -110,7 +111,6 @@ class AnnealHelper(object):
         self.TABLE_COUNT = table_count
         # Just need a value that is big enough to keep energy always positive
         self.MAX_ENERGY = MAX_CONNECTION * self.TABLE_COUNT * self.PEOPLE_COUNT**2
-
 
     def get_initial_plan(self):
         people = list(range(0, self.PEOPLE_COUNT))
