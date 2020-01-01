@@ -51,9 +51,11 @@ try:
 except ImportError:
     import random
 
+
 def round_figures(x, n):
     """Returns x rounded to n significant figures."""
     return round(x, int(n - math.ceil(math.log10(abs(x)))))
+
 
 def time_string(seconds):
     """Returns time in seconds as a string formatted HHHH:MM:SS."""
@@ -61,6 +63,7 @@ def time_string(seconds):
     h, s = divmod(s, 3600)   # get hours and remainder
     m, s = divmod(s, 60)     # split remainder into minutes and seconds
     return '%4i:%02i:%02i' % (h, m, s)
+
 
 class Annealer:
     """Performs simulated annealing by calling functions to calculate
@@ -107,18 +110,18 @@ class Annealer:
 
             elapsed = time.time() - start
             if step == 0:
-                print ' Temperature        Energy    Accept   Improve     Elapsed   Remaining'
-                print '%12.2f  %12.2f                      %s            ' % \
-                    (T, E, time_string(elapsed) )
+                print(' Temperature        Energy    Accept   Improve     Elapsed   Remaining')
+                print('%12.2f  %12.2f                      %s            ' % \
+                    (T, E, time_string(elapsed) ))
             else:
                 remain = ( steps - step ) * ( elapsed / step )
-                print '%12.2f  %12.2f  %7.2f%%  %7.2f%%  %s  %s' % \
+                print('%12.2f  %12.2f  %7.2f%%  %7.2f%%  %s  %s' % \
                     (T, E, 100.0*acceptance, 100.0*improvement,
-                        time_string(elapsed), time_string(remain))
+                        time_string(elapsed), time_string(remain)))
 
         # Precompute factor for exponential cooling from Tmax to Tmin
         if Tmin <= 0.0:
-            print 'Exponential cooling requires a minimum temperature greater than zero.'
+            print('Exponential cooling requires a minimum temperature greater than zero.')
             sys.exit()
         Tfactor = -math.log( float(Tmax) / Tmin )
 
@@ -200,7 +203,7 @@ class Annealer:
         step = 0
         start = time.time()
 
-        print 'Attempting automatic simulated anneal...'
+        print('Attempting automatic simulated anneal...')
 
         # Find an initial guess for temperature
 
@@ -217,14 +220,14 @@ class Annealer:
         if T == 0.0:
             raise Exception("Couldn't find initial temperature")
 
-        print 'Exploring temperature landscape:'
-        print ' Temperature        Energy    Accept   Improve     Elapsed'
+        print('Exploring temperature landscape:')
+        print(' Temperature        Energy    Accept   Improve     Elapsed')
         def update(T, E, acceptance, improvement):
             """Prints the current temperature, energy, acceptance rate,
             improvement rate, and elapsed time."""
             elapsed = time.time() - start
-            print '%12.2f  %12.2f  %7.2f%%  %7.2f%%  %s' % \
-                (T, E, 100.0*acceptance, 100.0*improvement, time_string(elapsed))
+            print('%12.2f  %12.2f  %7.2f%%  %7.2f%%  %s' % \
+                (T, E, 100.0*acceptance, 100.0*improvement, time_string(elapsed)))
 
         # Search for Tmax - a temperature that gives 98% acceptance
         state, E, acceptance, improvement = run(state, T, steps)
@@ -256,6 +259,7 @@ class Annealer:
         # MP: Don't perform anneal, just return params
         #return self.anneal(state, Tmax, Tmin, duration, 20)
         return {'tmax': Tmax, 'tmin': Tmin, 'steps': duration}
+
 
 if __name__ == '__main__':
     """Test annealer with a traveling salesman problem."""
@@ -303,17 +307,17 @@ if __name__ == '__main__':
     state, e = annealer.anneal(state, 10000000, 0.01, 18000*len(state), 9)
     while state[0] != 'New York City':
         state = state[1:] + state[:1]  # rotate NYC to start
-    print "%i mile route:" % route_energy(state)
+    print("%i mile route:" % route_energy(state))
     for city in state:
-        print "\t", city
+        print("\t", city)
 
     # Minimize the distance to be traveled by simulated annealing with an
     # automatically chosen temperature schedule
     state, e = annealer.auto(state, 4)
     while state[0] != 'New York City':
         state = state[1:] + state[:1]  # rotate NYC to start
-    print "%i mile route:" % route_energy(state)
+    print("%i mile route:" % route_energy(state))
     for city in state:
-        print "\t", city
+        print("\t", city)
 
     sys.exit()

@@ -152,7 +152,7 @@ $(document).ready(function () {
     }
 
     function cellRenderer (instance, td, row, col, prop, value, cellProperties) {
-        Handsontable.TextCell.renderer.apply(this, arguments);
+        Handsontable.cellTypes.text.renderer.apply(this, arguments);
         if (groups.left.indexOf(row) != -1 ||
             groups.top.indexOf(col) != -1) {
             td.style.background = "#eee";
@@ -165,6 +165,7 @@ $(document).ready(function () {
         data: [[""]],
         rowHeaders: false,
         colHeaders: false,
+        licenseKey: 'non-commercial-and-evaluation',
         height: 600,
         fixedRowsTop: 1,
         fixedColumnsLeft: 1,

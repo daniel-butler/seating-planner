@@ -55,10 +55,8 @@ Lori
 
 
 #### Plans and Tables ####
-
 # A Plan is a list of Tables.
 # A Table is a list of integers representing people
-
 
 
 def empty(table):
@@ -207,4 +205,4 @@ def solve(names, connections, table_size, table_count,
 
 if __name__ == '__main__':
     planning_helper, plan = solve(EXAMPLE_NAMES, EXAMPLE_CONNECTIONS, 9, 2)
-    print planning_helper.plan_to_people(plan)
+    print(planning_helper.plan_to_people(plan))

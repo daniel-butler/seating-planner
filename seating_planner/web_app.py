@@ -1,7 +1,7 @@
 import re
 
 from flask import Flask, jsonify, render_template, request, Response
-from werkzeug.contrib.fixers import ProxyFix
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from seating_planner.solver import solve
 
@@ -73,13 +73,11 @@ def find_solution():
     return jsonify({'solution': planning_helper.plan_to_people(plan)})
 
 
-
 # Download and upload are just echoing back data that is there client side,
 # but this mechanism allows us to make use of:
 #
 # * file selection and upload in the browser
 # * automatic saving of downloads in most browsers (using Content-Disposition)
-
 
 @app.route('/download-form/')
 def download_form():
@@ -117,6 +115,7 @@ class ScriptRootFix(object):
             path_remainder = forwarded_uri[:-len(path_info)]
             environ['SCRIPT_NAME'] = path_remainder
         return self.app(environ, start_response)
+
 
 app.wsgi_app = ScriptRootFix(ProxyFix(app.wsgi_app))
 
