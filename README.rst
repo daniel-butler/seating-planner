@@ -1,3 +1,7 @@
+Python 3 version of `Lukes Seating Planner <https://bitbucket.org/spookylukey/seating-planner/src/default/>`_
+==================================================================================================================
+
+
 Seating planner
 ===============
 
