@@ -23,7 +23,7 @@ def empty(table):
 
 ### People who are coming, and information about connections
 
-MAX_CONNECTION = 50
+MAX_CONNECTION = 100
 
 CONSERVE_TABLE_COEFFICIENT = 50
 
