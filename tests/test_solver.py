@@ -25,9 +25,12 @@ def test_solver():
     0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1
     """
 
-    EXAMPLE_CONNECTIONS = [map(int, l.strip().split(" ")) for l in connection_matrix.strip().split("\n")]
+    example_connections = [
+        [int(value) for value in line.strip().split(',')]
+        for line in connection_matrix.strip().split('\n')
+    ]
 
-    EXAMPLE_NAMES = """
+    example_names = """
     Deb
     John
     Martha
@@ -47,5 +50,5 @@ def test_solver():
     Lori
     """.strip().split("\n")
 
-    planning_helper, plan = solver.solve(EXAMPLE_NAMES, EXAMPLE_CONNECTIONS, 9, 2)
-    print(planning_helper.plan_to_people(plan))
+    planning_helper, plan = solver.solve(example_names, example_connections, 9, 2)
+
