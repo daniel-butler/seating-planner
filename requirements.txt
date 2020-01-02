@@ -6,3 +6,5 @@ argparse
 itsdangerous
 gunicorn
 numpy
+pytest
+scipy

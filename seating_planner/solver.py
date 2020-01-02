@@ -12,48 +12,6 @@ import random
 
 from .anneal import Annealer
 
-connection_matrix = """
-1 50 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0
-50 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0
-1 1 1 50 1 1 1 1 10 0 0 0 0 0 0 0 0
-1 1 50 1 1 1 1 1 1 0 0 0 0 0 0 0 0
-1 1 1 1 1 50 1 1 1 0 0 0 0 0 0 0 0
-1 1 1 1 50 1 1 1 1 0 0 0 0 0 0 0 0
-1 1 1 1 1 1 1 50 1 0 0 0 0 0 0 0 0
-1 1 1 1 1 1 50 1 1 0 0 0 0 0 0 0 0
-1 1 10 1 1 1 1 1 1 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 1 50 1 1 1 1 1 1
-0 0 0 0 0 0 0 0 0 50 1 1 1 1 1 1 1
-0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1
-0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1
-0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1
-0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1
-0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1
-0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1
-"""
-EXAMPLE_CONNECTIONS = [map(int, l.strip().split(" ")) for l in connection_matrix.strip().split("\n")]
-
-EXAMPLE_NAMES = """
-Deb
-John
-Martha
-Travis
-Allan
-Lois
-Jayne
-Brad
-Abby
-Mary
-Lee
-Annika
-Carl
-Colin
-Shirley
-DeAnn
-Lori
-""".strip().split("\n")
-
-
 #### Plans and Tables ####
 # A Plan is a list of Tables.
 # A Table is a list of integers representing people
@@ -173,10 +131,9 @@ class AnnealHelper(object):
         return self.MAX_ENERGY - val
 
 
-def solve(names, connections, table_size, table_count,
-          annealing_time=6,
-          exploration_steps=100,
-          ):
+def solve(
+    names, connections, table_size, table_count, annealing_time=6, exploration_steps=100,
+):
     """
     Given a list of names,
     and a square matrix (list of list) defining connection strengths,
@@ -202,7 +159,3 @@ def solve(names, connections, table_size, table_count,
     state = [t for t in state if not empty(t)]
     return planning_helper, state
 
-
-if __name__ == '__main__':
-    planning_helper, plan = solve(EXAMPLE_NAMES, EXAMPLE_CONNECTIONS, 9, 2)
-    print(planning_helper.plan_to_people(plan))
