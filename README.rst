@@ -67,9 +67,10 @@ Work the Matrix by entering people based on their connection strength 50= togeth
 
 Can also include a connection matrix as a csv saved as a `.txt` file using the Upload connection data file upload button.
 
+Run with PyPy for significant speedups (about 5-10x)
+
 Deploying
 --------------------------
-Run with PyPy for significant speedups (about 5-10x)
 It can de deployed using any WSGI container e.g. gunicorn:
 
 .. code-block::
