@@ -1,5 +1,9 @@
-Python 3 version of `Lukes Seating Planner <https://bitbucket.org/spookylukey/seating-planner/src/default/>`_
+Python 3 version of `Luke's Seating Planner <https://bitbucket.org/spookylukey/seating-planner/src/default/>`_
 ==================================================================================================================
+
+
+.. |Python Version Support| image:: https://img.shields.io/badge/python-3.7%7C3.8-green.svg
+    :target: https://python.org/
 
 
 Seating planner
@@ -16,7 +20,7 @@ The approach taken involves:
 
   http://www.improbable.com/news/2012/Optimal-seating-chart.pdf
 
-* Using simmulated annealing to attempt to find a good solution.
+* Using simulated annealing to attempt to find a good solution.
 
   The code for this comes from https://github.com/perrygeo/python-simulated-annealing
 
@@ -28,6 +32,8 @@ relatively nice interface for entering the connection matrix.
 
 Install
 -----------------------
+Python 3.7
+
 Create a virtual environment and activate it
 .. code-block::
 
