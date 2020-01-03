@@ -26,24 +26,46 @@ seating_planner/solver.py contains the main entry point for the algorithm
 seating_planner/web_app.py contains a Flask web app as a UI, including a
 relatively nice interface for entering the connection matrix.
 
-Installation and running
+Install
+-----------------------
+Create a virtual environment and activate it
+.. code-block::
+
+    $ python -m pip install virtualenv
+    $ python -m virtualenv venv
+    $ /venv/scripts/activate
+
+install the dep
+.. code-block::
+
+    $ (venv) python -m pip install -r requirements.txt
+
+
+QuickStart
 ------------------------
 
-Preferably in a virtualenv:
+Run the flask app:
 
-* Add the current directory to the Python path
+.. code-block::
 
-* $ pip install -r requirements.txt
+    $ python run.py
 
-* ./seating_planner/web_app.py
+Go to http://localhost:5000
 
-Access on localhost:5000
+Add names in the "Names to Add:" block.
 
-It can be run under PyPy for significant speedups (about 5-10x)
+Work the Matrix by entering people based on their connection strength 50= together -50= apart 0= indifferent.
 
+Can also include a connection matrix as a csv saved as a `.txt` file using the Upload connection data file upload button.
+
+Deploying
+--------------------------
+Run with PyPy for significant speedups (about 5-10x)
 It can de deployed using any WSGI container e.g. gunicorn:
 
-$ gunicorn  -b 127.0.0.1:12345 -D -w 4 seating_planner.web_app:app
+.. code-block::
+
+    $ gunicorn  -b 127.0.0.1:12345 -D -w 4 seating_planner.web_app:app
 
 
 License

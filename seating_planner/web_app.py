@@ -118,7 +118,3 @@ class ScriptRootFix(object):
 
 
 app.wsgi_app = ScriptRootFix(ProxyFix(app.wsgi_app))
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
