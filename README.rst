@@ -1,6 +1,7 @@
 Python 3 version of `Luke's Seating Planner <https://bitbucket.org/spookylukey/seating-planner/src/default/>`_
 ==================================================================================================================
 
+|Python Version Support|
 
 .. |Python Version Support| image:: https://img.shields.io/badge/python-3.7%7C3.8-green.svg
     :target: https://python.org/
@@ -35,6 +36,7 @@ Install
 Python 3.7
 
 Create a virtual environment and activate it
+
 .. code-block::
 
     $ python -m pip install virtualenv
@@ -42,6 +44,7 @@ Create a virtual environment and activate it
     $ /venv/scripts/activate
 
 install the dep
+
 .. code-block::
 
     $ (venv) python -m pip install -r requirements.txt
