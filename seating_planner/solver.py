@@ -71,7 +71,7 @@ class AnnealHelper(object):
         self.MAX_ENERGY = MAX_CONNECTION * self.TABLE_COUNT * self.PEOPLE_COUNT**2
 
     def get_initial_plan(self):
-        people = list(range(0, self.PEOPLE_COUNT))
+        people = list(range(self.PEOPLE_COUNT))
         random.shuffle(people)
 
         # We need extra items, to represent spare places.  This allows us the
@@ -116,10 +116,11 @@ class AnnealHelper(object):
     def energy(self, plan):
         val = sum(
             self.CONNECTIONS[j][k] * self.seated_together(plan, table_num, j, k)
-            for table_num in range(0, self.TABLE_COUNT)
-            for j in range(0, self.PEOPLE_COUNT - 1)
+            for table_num in range(self.TABLE_COUNT)
+            for j in range(self.PEOPLE_COUNT - 1)
             for k in range(j, self.PEOPLE_COUNT)
-            )
+        )
+
 
 
         # Better score if fewer tables used (for more friendliness even with

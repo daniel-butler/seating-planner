@@ -185,7 +185,7 @@ class Annealer:
             prevState = copy.deepcopy(state)
             prevEnergy = E
             accepts, improves = 0, 0
-            for step in range(steps):
+            for _ in range(steps):
                 self.move(state)
                 E = self.energy(state)
                 dE = E - prevEnergy
